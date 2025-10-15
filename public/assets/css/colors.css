@@ -1,0 +1,36 @@
+:root {
+    --blue: #030F48;
+    --blue-muted: #030E4799;
+    --blue-1: #0B164E;
+    --coral: #D12E5D;
+    --coral-1: #E64C63;
+    --dark: #000;
+    --light: #FFF;
+    --muted: #666;
+
+
+    /* Text colors */
+    --h1-color: var(--blue);
+    --h1-light-color: var(--light);
+    --h2-color: var(--blue);
+    --h3-color: var(--blue-1);
+    --h3b-color: var(--coral);
+    --h4-color: var(--coral);
+    --body-color: var(--dark);
+
+    /* link colors */
+    --link-color: var(--light);
+    --link-hover-color: var(--coral);
+    --link-active-color: var(--light);
+    --link-2-color: var(--blue);
+    --link-2-hover-color: var(--blue);
+    --link-2-active-color: var(--light);
+    --link-3-color: var(--coral);
+    --link-3-hover-color: var(--blue);
+
+    /* background colors */
+    --bg-color: var(--light);
+    --bg-2-color: var(--blue);
+    --bg-3-color: var(--coral);
+
+}
