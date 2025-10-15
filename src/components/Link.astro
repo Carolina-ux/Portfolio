@@ -1,0 +1,90 @@
+---
+import { LINKS_TYPES } from "../types/links";
+
+interface Props {
+  url?: string;
+  variant?: LINKS_TYPES;
+  active?: boolean;
+  resume?: boolean;
+}
+
+const {
+  url = "#",
+  variant = LINKS_TYPES.PRIMARY,
+  active = false,
+  resume = false,
+} = Astro.props;
+
+let cssStiles = "link";
+let href = url;
+let download = "";
+
+switch (variant) {
+  case LINKS_TYPES.PRIMARY:
+    cssStiles += " link-primary";
+    break;
+  case LINKS_TYPES.SECONDARY:
+    cssStiles += " link-secondary";
+    break;
+  default:
+    cssStiles += " link-primary";
+}
+
+if (active) {
+  cssStiles += " active";
+}
+
+if (resume) {
+  href = "/assets/curriculum.pdf";
+  download = "download='carolina-cv.pdf'";
+}
+---
+
+<a download href={href} class={cssStiles} {download}>
+  <slot />
+</a>
+
+<style>
+  a.link {
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 14px;
+    border-radius: 16px;
+    height: 44px;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: regular;
+
+    &.link-primary {
+      background-color: var(--bg-3-color);
+      color: var(--link-color);
+      transition:
+        transform 0.3s,
+        filter 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+        filter: brightness(1.4);
+      }
+    }
+
+    &.link-secondary {
+      color: var(--link-2-color);
+      font-weight: bold;
+      transition:
+        background-color 0.3s,
+        color 0.3s;
+
+      &:hover {
+        background-color: var(--bg-2-color);
+        color: var(--link-color);
+      }
+
+      &.active {
+        background-color: var(--bg-2-color);
+        color: var(--link-color);
+      }
+    }
+  }
+</style>

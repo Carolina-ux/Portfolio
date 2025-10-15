@@ -1,0 +1,115 @@
+---
+import { LINKS_TYPES } from "../types/links";
+import Link from "./Link.astro";
+---
+
+<header>
+  <div class="desktop">
+    <Link resume={true} variant={LINKS_TYPES.PRIMARY}>Download resume</Link>
+    <nav>
+      <ul>
+        <li>
+          <Link url="#home" variant={LINKS_TYPES.SECONDARY} active={true}
+            >Home</Link
+          >
+        </li>
+        <li>
+          <Link url="#about" variant={LINKS_TYPES.SECONDARY}>About </Link>
+        </li>
+        <li>
+          <Link url="#proyects" variant={LINKS_TYPES.SECONDARY}>Projects</Link>
+        </li>
+        <li>
+          <Link url="#contact" variant={LINKS_TYPES.SECONDARY}>Contact</Link>
+        </li>
+        <li class="hidden">Menu</li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="mobile">
+    <nav>
+      <ul>
+        <li>
+          <Link variant={LINKS_TYPES.SECONDARY}>Menu</Link>
+        </li>
+        <li>
+          <Link url="#home" variant={LINKS_TYPES.SECONDARY} active={true}
+            >Home</Link
+          >
+        </li>
+        <li>
+          <Link url="#proyects" variant={LINKS_TYPES.SECONDARY}>Projects</Link>
+        </li>
+        <li>
+          <Link url="#contact" variant={LINKS_TYPES.SECONDARY}>Contact</Link>
+        </li>
+        <li>
+          <Link resume={true} variant={LINKS_TYPES.PRIMARY}>
+            Download resume
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    padding: 20px 40px;
+    width: 100%;
+
+    & .desktop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & nav ul {
+        list-style: none;
+        display: flex;
+        gap: 24px;
+        margin: 0;
+        padding: 0;
+
+        & li {
+          margin: 0;
+
+          &.hidden {
+            display: none;
+          }
+        }
+      }
+    }
+
+    & .mobile {
+      display: none;
+    }
+
+    @media (max-width: 390px) {
+      & .desktop {
+        display: none;
+      }
+
+      & .mobile {
+        display: block;
+
+        & nav {
+          height: max-content;
+
+          & ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            margin: 0;
+            padding: 0;
+
+            & li {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
