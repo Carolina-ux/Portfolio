@@ -28,35 +28,37 @@ import Link from "./Link.astro";
   </div>
 
   <div class="mobile">
-    <nav>
-      <ul>
-        <li>
-          <Link variant={LINKS_TYPES.SECONDARY}>Menu</Link>
-        </li>
-        <li>
-          <Link url="#home" variant={LINKS_TYPES.SECONDARY} active={true}
-            >Home</Link
-          >
-        </li>
-        <li>
-          <Link url="#proyects" variant={LINKS_TYPES.SECONDARY}>Projects</Link>
-        </li>
-        <li>
-          <Link url="#contact" variant={LINKS_TYPES.SECONDARY}>Contact</Link>
-        </li>
-        <li>
-          <Link resume={true} variant={LINKS_TYPES.PRIMARY}>
-            Download resume
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <details>
+      <summary> Menu </summary>
+      <nav>
+        <ul>
+          <li></li>
+          <li>
+            <Link url="#home" variant={LINKS_TYPES.SECONDARY} active={true}
+              >Home</Link
+            >
+          </li>
+          <li>
+            <Link url="#proyects" variant={LINKS_TYPES.SECONDARY}>Projects</Link
+            >
+          </li>
+          <li>
+            <Link url="#contact" variant={LINKS_TYPES.SECONDARY}>Contact</Link>
+          </li>
+          <li>
+            <Link resume={true} variant={LINKS_TYPES.PRIMARY}>
+              Download resume
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </details>
   </div>
 </header>
 
 <style>
   header {
-    padding: 20px 40px;
+    padding: 16px 40px;
     width: 100%;
 
     & .desktop {
@@ -93,6 +95,24 @@ import Link from "./Link.astro";
       & .mobile {
         display: block;
 
+        & details {
+          color: var(--link-2-color);
+
+          &:first-of-type summary::marker,
+          :is(::-webkit-details-marker) {
+            content: "☰";
+            font-weight: bolder;
+          }
+
+          &[open]:first-of-type summary::marker {
+            content: "✕";
+          }
+
+          & summary {
+            font-weight: bold;
+          }
+        }
+
         & nav {
           height: max-content;
 
@@ -100,7 +120,7 @@ import Link from "./Link.astro";
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            gap: 32px;
             margin: 0;
             padding: 0;
 
