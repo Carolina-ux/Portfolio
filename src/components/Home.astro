@@ -1,17 +1,18 @@
 ---
+import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 ---
 
 <div id="container">
   <Header />
+  <main></main>
+  <Footer />
 </div>
 
 <style>
   #container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-rows: 8vh auto 18vh;
     height: 100vh;
     gap: 24px;
   }
