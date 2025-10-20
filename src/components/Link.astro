@@ -6,6 +6,7 @@ interface Props {
   variant?: LINKS_TYPES;
   active?: boolean;
   resume?: boolean;
+  target?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   variant = LINKS_TYPES.PRIMARY,
   active = false,
   resume = false,
+  target,
 } = Astro.props;
 
 let cssStiles = "link";
@@ -25,6 +27,9 @@ switch (variant) {
     break;
   case LINKS_TYPES.SECONDARY:
     cssStiles += " link-secondary";
+    break;
+  case LINKS_TYPES.TERTIARY:
+    cssStiles += " link-tertiary";
     break;
   default:
     cssStiles += " link-primary";
@@ -40,7 +45,7 @@ if (resume) {
 }
 ---
 
-<a download href={href} class={cssStiles} {download}>
+<a download href={href} class={cssStiles} {download} target={target}>
   <slot />
 </a>
 
@@ -83,6 +88,17 @@ if (resume) {
       &.active {
         background-color: var(--bg-2-color);
         color: var(--link-color);
+      }
+    }
+
+    &.link-tertiary {
+      padding: 0;
+      color: var(--body-light-color);
+      font-weight: bold;
+
+      &.active {
+        background-color: var(--bg-2-color);
+        color: var(--h4-color);
       }
     }
   }

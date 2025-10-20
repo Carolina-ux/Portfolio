@@ -1,18 +1,91 @@
 ---
+import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 ---
 
 <div id="container">
   <Header />
+  <main>
+    <div class="home-text">
+      <article>
+        <h1 class="h1">Hi , I am Carolina Ruzafa</h1>
+        <p>
+          A UX UI designer, focused on creating accessible digital products and
+          improving the user experience. I constantly seek new trends and best
+          practices to design attractive, usable, and accessible interfaces. My
+          background in graphic design has allowed me to master various design
+          tools. Additionally, I am familiar with collaborative methodologies
+          such as Agile and Scrum, and I continue learning about accessibility
+          to apply it in my projects.
+        </p>
+      </article>
+    </div>
+    <div class="home-img">
+      <img src="/assets/img/carolina-img.avif" alt="Carolina Ruzafa face" />
+    </div>
+  </main>
+  <Footer />
 </div>
 
 <style>
   #container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
-    gap: 24px;
+    justify-content: space-between;
+
+    main {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: 8vw;
+      width: 100%;
+      padding: 0 16vw;
+      height: 70vh;
+
+      .home-text {
+        width: 48vh;
+        max-width: 453px;
+      }
+
+      .home-img {
+        width: 320px;
+        gap: 18vw;
+
+        img {
+          border-radius: 8px;
+          width: 320px;
+        }
+      }
+    }
+
+    @media (max-width: 390px) {
+      main {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        padding: 0 16vw;
+        height: auto;
+
+        .home-text {
+          width: 100%;
+          max-width: 100%;
+          text-align: center;
+        }
+
+        .home-img {
+          height: auto;
+          max-height: none;
+          width: 100%;
+          max-width: 100%;
+
+          img {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            height: auto;
+          }
+        }
+      }
+    }
   }
 </style>
