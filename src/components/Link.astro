@@ -41,11 +41,16 @@ if (active) {
 
 if (resume) {
   href = "/assets/curriculum.pdf";
-  download = "download='carolina-cv.pdf'";
+  download = "carolina-cv.pdf";
 }
 ---
 
-<a download href={href} class={cssStiles} {download} target={target}>
+<a
+  href={href}
+  class={cssStiles}
+  target={target}
+  {...resume ? { download } : {}}
+>
   <slot />
 </a>
 
