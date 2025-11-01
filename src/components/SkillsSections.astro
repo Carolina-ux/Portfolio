@@ -1,0 +1,43 @@
+---
+import SkillCard from "./SkillCard.astro";
+
+const skills = [["skill1","url"],["skill1","url"],["skill1","url"],["skill1","url"],["skill1","url"],["skill1","url"]]
+---
+
+<section id="skills" class="skills">
+
+	<div class="inner">
+		{skills.map(skill => (
+			<SkillCard skillName={skill[0]} imgimageSrc={skill[1]}  />
+		))}
+	</div>
+
+</section>
+
+<style>
+	section.skills{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 300px;
+		padding-top: 84px;
+
+		& div.inner{
+ 			display:flex;
+ 			flex-wrap:wrap;
+			justify-content: center;
+			align-items: center;
+			gap:56px;
+			width: 90vw;
+			max-width: 824px;
+ 		}
+	}
+
+	@media (max-width: 390px) {
+		section.skills{
+			height: auto;
+		}
+	}
+ 	
+</style>
+

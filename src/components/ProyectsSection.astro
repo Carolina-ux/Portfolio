@@ -1,0 +1,23 @@
+---
+import ProyectCard from "./ProyectCard.astro";
+
+const proyects = [["skill1","url"],["skill1","url"],["skill1","url"]]
+---
+
+<section class="proyects" id="proyects">
+    
+
+    {proyects.map(element => (
+			<ProyectCard/>
+		))
+    }
+</section>
+
+<style>
+    section.proyects{
+		  display: flex;
+      flex-direction: column;
+      gap:32px;
+      padding-top: 84px;
+    }
+</style>

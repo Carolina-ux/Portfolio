@@ -1,0 +1,42 @@
+---
+const { skillName = "Nombre Habilidad", skillSubtitle="subtitulo", imageSrc = "./assets/img/skills/default.png" } = Astro.props;
+---
+
+<div class="skill-card">
+	<div class="skill-name">
+		{skillName} 
+		<p>{skillSubtitle}</p>
+	</div>	 
+	<div class="img">
+		<img src={imageSrc}>
+	</div>
+</div>
+
+<style>
+
+ 		div.skill-card{
+ 			display:flex;
+			flex-direction: row-reverse;
+			align-items: center;
+			gap:16px;
+ 			width:230px;
+ 			
+ 			& div.skill-name {
+				display: flex;
+				flex-direction: column;
+				gap:8px;
+ 				width:80%;
+				color:#424257;
+				text-transform: capitalize;
+
+				& p{
+					text-transform: capitalize;
+					color: var(--text-muted);
+				}
+ 			}
+ 			
+ 			& div.img{
+ 				width:20%;
+ 			}
+ 		}
+</style>

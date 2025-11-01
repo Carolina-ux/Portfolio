@@ -1,0 +1,57 @@
+---
+import { LINKS_TYPES } from "../types/links";
+import Link from "./Link.astro";
+---
+
+<div class="proyect-card">
+    <div class="card-body">
+        <div class="card-title">
+            <h3>Title</h3>
+            <p>Subtitle</p>
+        </div>
+        
+        <div class="card-action">
+            <Link url="#about" variant={LINKS_TYPES.SECONDARY} active={true}>
+                Accede al proyecto
+            </Link>
+        </div>
+    </div>
+    <img src="./assets/img/carolina-img.avif" alt="" srcset="">
+</div>
+
+<style>
+    div.proyect-card{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        gap:32px;
+        margin-left: 8vw;
+        width: 90vw;
+        max-width: 824px;
+        
+
+        & div.card-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 208px;
+        }
+
+        & img{
+            width: 208px;
+        }
+        
+        
+    }
+
+    @media (max-width: 390px) {
+
+        div.proyect-card{
+            flex-direction: column-reverse;
+            gap: 0;
+        }
+    }
+
+    
+</style>
