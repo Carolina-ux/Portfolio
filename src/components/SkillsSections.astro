@@ -8,7 +8,7 @@ const skills = [["skill1","url"],["skill1","url"],["skill1","url"],["skill1","ur
 
 	<div class="inner">
 		{skills.map(skill => (
-			<SkillCard  />
+			<SkillCard skillName={skill[0]} imgimageSrc={skill[1]}  />
 		))}
 	</div>
 
