@@ -9,12 +9,12 @@ import Link from "./Link.astro";
     <nav>
       <ul>
         <li>
-          <Link url="#home" variant={LINKS_TYPES.SECONDARY} active={true}
-            >Home</Link
-          >
+          <Link url="#about" variant={LINKS_TYPES.SECONDARY} active={true}>
+            Home
+          </Link>
         </li>
         <li>
-          <Link url="#about" variant={LINKS_TYPES.SECONDARY}>About </Link>
+          <Link url="#skills" variant={LINKS_TYPES.SECONDARY}>Skills </Link>
         </li>
         <li>
           <Link url="#proyects" variant={LINKS_TYPES.SECONDARY}>Projects</Link>
@@ -34,7 +34,7 @@ import Link from "./Link.astro";
         <ul>
           <li></li>
           <li>
-            <Link url="#home" variant={LINKS_TYPES.SECONDARY} active={true}
+            <Link url="#about" variant={LINKS_TYPES.SECONDARY} active={true}
               >Home</Link
             >
           </li>
@@ -58,8 +58,10 @@ import Link from "./Link.astro";
 
 <style>
   header {
+    position: fixed;
     padding: 16px 40px;
     width: 100%;
+    background-color: #ffffffa9;
 
     & .desktop {
       display: flex;
@@ -94,7 +96,7 @@ import Link from "./Link.astro";
 
       & .mobile {
         display: block;
-
+        
         & details {
           color: var(--link-2-color);
 

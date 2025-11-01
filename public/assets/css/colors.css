@@ -19,6 +19,7 @@
     --h4-color: var(--coral);
     --body-color: var(--dark);
     --body-light-color: var(--light);
+    --text-muted: var(--blue-muted);
 
     /* link colors */
     --link-color: var(--light);

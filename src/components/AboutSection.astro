@@ -1,0 +1,79 @@
+---
+
+---
+<section id="about" class="about">
+  
+      <article class="text">
+        <h1 class="h1"><span class="text-muted">Hi , I am </span><br> Carolina Ruzafa</h1>
+        <p>
+          A UX UI designer, focused on creating accessible digital products and
+          improving the user experience. I constantly seek new trends and best
+          practices to design attractive, usable, and accessible interfaces. My
+          background in graphic design has allowed me to master various design
+          tools. Additionally, I am familiar with collaborative methodologies
+          such as Agile and Scrum, and I continue learning about accessibility
+          to apply it in my projects.
+        </p>
+      </article>
+    
+    <div class="img">
+      <img src="./assets/img/carolina-img.avif" alt="Carolina Ruzafa face" />
+    </div>
+  </main>
+  
+  <style>
+  section.about {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: 64px;
+      width: 100%;
+      height: 720px;
+
+      .text {
+        width: 64vh;
+        max-width: 824px;
+      }
+
+      .img {
+        width: 320px;
+        gap: 18vw;
+
+        img {
+          border-radius: 8px;
+          width: 320px;
+        }
+      }
+    }
+
+    @media (max-width: 390px) {
+      section.about {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        margin-top: 84px;
+        padding: 0 16vw;
+        height: max-content;
+
+        .text {
+          width: 100%;
+          max-width: 100%;
+          text-align: center;
+        }
+
+        .img {
+          height: auto;
+          max-height: none;
+          width: 100%;
+          max-width: 100%;
+
+          img {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            height: auto;
+          }
+        }
+      }
+    }
+    </style>
