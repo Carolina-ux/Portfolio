@@ -1,0 +1,252 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, getEntry } from "astro:content";
+import type { CollectionEntry, InferEntrySchema } from "astro:content";
+
+type ProjectEntry = CollectionEntry<"projects">;
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const { slug } = Astro.params as { slug: ProjectEntry["slug"] };
+const entry = await getEntry("projects", slug);
+
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
+const { Content, headings } = await entry.render();
+const data: InferEntrySchema<"projects"> = entry.data;
+const pageTitle = data.title ?? slug;
+
+const allProjects = await getCollection("projects");
+const currentIndex = allProjects.findIndex((p) => p.slug === slug);
+const prev = currentIndex > 0 ? allProjects[currentIndex - 1] : undefined;
+const next =
+  currentIndex >= 0 && currentIndex < allProjects.length - 1
+    ? allProjects[currentIndex + 1]
+    : undefined;
+---
+
+<Layout>
+  <main class="project-page">
+    <article>
+      <header>
+        <p class="kicker">Project</p>
+        <h1>{pageTitle}</h1>
+        {data.subtitle && <p class="subtitle">{data.subtitle}</p>}
+      </header>
+
+      {
+        data.image && (
+          <figure>
+            <img src={data.image} alt={pageTitle} loading="lazy" />
+          </figure>
+        )
+      }
+
+      <Content />
+
+      {
+        data.link && (
+          <p class="cta">
+            <a
+              href={data.link}
+              target={data.link.startsWith("http") ? "_blank" : undefined}
+            >
+              Ver proyecto
+            </a>
+          </p>
+        )
+      }
+
+      {
+        (prev || next) && (
+          <nav class="pager">
+            {prev && (
+              <a href={`./${prev.slug}`} rel="prev">
+                ← {prev.data.title}
+              </a>
+            )}
+            {next && (
+              <a href={`./${next.slug}`} rel="next">
+                {next.data.title} →
+              </a>
+            )}
+          </nav>
+        )
+      }
+    </article>
+
+    {
+      headings?.length ? (
+        <aside class="toc">
+          <p class="toc-title">Contenido</p>
+          <ul>
+            {headings.map((h) => (
+              <li class={`lvl-${h.depth}`}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      ) : null
+    }
+  </main>
+</Layout>
+
+<style>
+  main.project-page {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    padding: 48px clamp(16px, 4vw, 64px);
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  header .kicker {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 14px;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 42px);
+    color: var(--h1-color, #1a1a2c);
+  }
+
+  header .subtitle {
+    margin: 8px 0 0;
+    color: var(--text-muted);
+    font-size: 16px;
+  }
+
+  figure {
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-2-color, #f3f4f8);
+  }
+
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .cta a {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--bg-2-color, #f3f4f8);
+    color: var(--link-color, #3750d4);
+    text-decoration: none;
+    font-weight: 600;
+    transition:
+      transform 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .cta a:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+
+  aside.toc {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+    padding: 16px;
+    border: 1px solid var(--bg-2-color, #f3f4f8);
+    border-radius: 12px;
+    background: var(--bg-1-color, #ffffff);
+  }
+
+  .toc-title {
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .toc li a {
+    color: var(--link-tertiary, #424257);
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .toc li a:hover {
+    text-decoration: underline;
+  }
+
+  .toc li.lvl-2 {
+    padding-left: 12px;
+    font-size: 13px;
+  }
+
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .pager a {
+    text-decoration: none;
+    color: var(--link-color, #3750d4);
+    font-weight: 600;
+    background: var(--bg-2-color, #f3f4f8);
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition:
+      transform 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .pager a:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+
+  @media (max-width: 900px) {
+    main.project-page {
+      grid-template-columns: 1fr;
+    }
+
+    aside.toc {
+      position: static;
+      order: -1;
+    }
+  }
+
+  @media (max-width: 520px) {
+    main.project-page {
+      padding: 32px 16px;
+    }
+  }
+</style>

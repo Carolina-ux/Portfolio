@@ -1,57 +1,76 @@
 ---
-import { LINKS_TYPES } from "../types/links";
+import { LINKS_TYPES } from "../types/types";
 import Link from "./Link.astro";
+interface Props {
+  title?: string;
+  subtitle?: string;
+  imageSrc?: string;
+  linkUrl?: string;
+  slug?: string;
+}
+
+const {
+  title = "Project title",
+  subtitle = "Project subtitle",
+  imageSrc = "./assets/img/carolina-img.avif",
+  linkUrl,
+  slug,
+}: Props = Astro.props;
+
+const resolvedLink = linkUrl ?? (slug ? `./proyects/${slug}` : undefined);
 ---
 
 <div class="proyect-card">
-    <div class="card-body">
-        <div class="card-title">
-            <h3>Title</h3>
-            <p>Subtitle</p>
-        </div>
-        
-        <div class="card-action">
-            <Link url="#about" variant={LINKS_TYPES.SECONDARY} active={true}>
-                Accede al proyecto
-            </Link>
-        </div>
+  <div class="card-body">
+    <div class="card-title">
+      <h3>{title}</h3>
+      <p>{subtitle}</p>
     </div>
-    <img src="./assets/img/carolina-img.avif" alt="" srcset="">
+
+    <div class="card-action">
+      {
+        resolvedLink && (
+          <Link
+            url={resolvedLink}
+            variant={LINKS_TYPES.SECONDARY}
+            target={resolvedLink.startsWith("http") ? "_blank" : undefined}
+          >
+            View Project
+          </Link>
+        )
+      }
+    </div>
+  </div>
+  <img src={imageSrc} alt={title} loading="lazy" />
 </div>
 
 <style>
-    div.proyect-card{
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        align-items: center;
-        gap:32px;
-        margin-left: 8vw;
-        width: 90vw;
-        max-width: 824px;
-        
+  div.proyect-card {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 32px;
+    margin-left: 8vw;
+    width: 90vw;
+    max-width: 824px;
 
-        & div.card-body{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            height: 208px;
-        }
-
-        & img{
-            width: 208px;
-        }
-        
-        
+    & div.card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 208px;
     }
 
-    @media (max-width: 390px) {
-
-        div.proyect-card{
-            flex-direction: column-reverse;
-            gap: 0;
-        }
+    & img {
+      width: 208px;
     }
+  }
 
-    
+  @media (max-width: 390px) {
+    div.proyect-card {
+      flex-direction: column-reverse;
+      gap: 0;
+    }
+  }
 </style>

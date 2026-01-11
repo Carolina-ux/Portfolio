@@ -1,23 +1,33 @@
 ---
 import ProyectCard from "./ProyectCard.astro";
+import { getCollection } from "astro:content";
 
-const proyects = [["skill1","url"],["skill1","url"],["skill1","url"]]
+const proyects = (await getCollection("projects")).sort((a, b) => {
+  const orderA = a.data.order ?? Number.MAX_SAFE_INTEGER;
+  const orderB = b.data.order ?? Number.MAX_SAFE_INTEGER;
+  return orderA - orderB;
+});
 ---
 
 <section class="proyects" id="proyects">
-    
-
-    {proyects.map(element => (
-			<ProyectCard/>
-		))
-    }
+  {
+    proyects.map(({ data, slug }) => (
+      <ProyectCard
+        title={data.title}
+        subtitle={data.subtitle}
+        imageSrc={data.image}
+        linkUrl={data.link}
+        slug={slug}
+      />
+    ))
+  }
 </section>
 
 <style>
-    section.proyects{
-		  display: flex;
-      flex-direction: column;
-      gap:32px;
-      padding-top: 84px;
-    }
+  section.proyects {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 84px;
+  }
 </style>

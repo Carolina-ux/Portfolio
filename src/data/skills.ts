@@ -1,9 +1,4 @@
-export type Skill = {
-  name: string;
-  subtitle?: string;
-  imageSrc: string;
-  url?: string;
-};
+import type { Skill } from "../types/types";
 
 export const skills: Skill[] = [
   {
