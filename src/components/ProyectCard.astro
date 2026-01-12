@@ -1,6 +1,7 @@
 ---
 import { LINKS_TYPES } from "../types/types";
 import Link from "./Link.astro";
+import LinkIcon from "./linkIcon.astro";
 interface Props {
   title?: string;
   subtitle?: string;
@@ -23,54 +24,85 @@ const resolvedLink = linkUrl ?? (slug ? `./proyects/${slug}` : undefined);
 <div class="proyect-card">
   <div class="card-body">
     <div class="card-title">
-      <h3>{title}</h3>
+      <h3 class="h3">
+        {
+          resolvedLink && (
+            <Link
+              url={resolvedLink}
+              variant={LINKS_TYPES.TERTIARY}
+              target={resolvedLink.startsWith("http") ? "_blank" : undefined}
+            >
+              {title}
+              <LinkIcon />
+            </Link>
+          )
+        }
+      </h3>
       <p>{subtitle}</p>
     </div>
-
-    <div class="card-action">
-      {
-        resolvedLink && (
-          <Link
-            url={resolvedLink}
-            variant={LINKS_TYPES.SECONDARY}
-            target={resolvedLink.startsWith("http") ? "_blank" : undefined}
-          >
-            View Project
-          </Link>
-        )
-      }
-    </div>
   </div>
-  <img src={imageSrc} alt={title} loading="lazy" />
-</div>
+  <figure>
+    <img src={imageSrc} alt={title} loading="lazy" />
+  </figure>
 
-<style>
-  div.proyect-card {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 32px;
-    margin-left: 8vw;
-    width: 90vw;
-    max-width: 824px;
-
-    & div.card-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      height: 208px;
-    }
-
-    & img {
-      width: 208px;
-    }
-  }
-
-  @media (max-width: 390px) {
+  <style>
     div.proyect-card {
-      flex-direction: column-reverse;
-      gap: 0;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 32px;
+      width: 90vw;
+      max-width: 824px;
+
+      & div.card-title {
+        & p {
+          color: var(--text-muted);
+        }
+      }
+
+      & div.card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 208px;
+      }
+
+      & figure {
+        border-radius: 16px;
+        border: 4px solid var(--border-color);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        & img {
+          width: 320px;
+          height: auto;
+          border-radius: 12px;
+        }
+      }
+
+      & h3 a.link {
+        font-size: inherit;
+        line-height: inherit;
+        padding: 0;
+        color: var(--h3b-color);
+        text-decoration: none;
+        gap: 10px;
+        transition:
+          color 0.2s ease,
+          transform 0.2s ease;
+
+        &:hover {
+          color: var(--h3-color);
+          transform: translateY(-2px);
+        }
+      }
     }
-  }
-</style>
+
+    @media (max-width: 390px) {
+      div.proyect-card {
+        flex-direction: column-reverse;
+        gap: 0;
+      }
+    }
+  </style>
+</div>

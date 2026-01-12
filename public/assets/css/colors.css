@@ -32,8 +32,11 @@
     --link-3-hover-color: var(--blue);
 
     /* background colors */
-    --bg-color:var(--light);
+    --bg-color: var(--light);
     --bg-2-color: var(--blue);
     --bg-3-color: var(--coral);
+
+    /* border colors */
+    --border-color: var(--blue);
 
 }

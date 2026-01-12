@@ -56,7 +56,9 @@ if (resume) {
 
 <style>
   a.link {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
     background: none;
     border: none;
@@ -64,6 +66,7 @@ if (resume) {
     border-radius: 24px;
     font-family: var(--font-primary);
     font-size: 16px;
+    line-height: inherit;
     font-weight: regular;
 
     &.link-primary {
@@ -99,7 +102,7 @@ if (resume) {
 
     &.link-tertiary {
       padding: 0;
-      color: var(--body-light-color);
+      color: currentColor;
       font-weight: bold;
 
       &.active {
