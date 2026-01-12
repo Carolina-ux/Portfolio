@@ -4,6 +4,9 @@ import { skills } from "../data/skills.ts";
 ---
 
 <section id="skills" class="skills">
+  <div class="header">
+    <h2 class="h1">My Stack</h2>
+  </div>
   <div class="inner">
     {
       skills.map((skill) => (
@@ -20,10 +23,23 @@ import { skills } from "../data/skills.ts";
 <style>
   section.skills {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    height: 300px;
-    padding-top: 84px;
+    align-items: center;
+    gap: 56px;
+    width: 90vw;
+
+    div.header {
+      width: 90vw;
+      max-width: 824px;
+
+      & h2.h1 {
+        margin-bottom: 32px;
+        margin: 0 20vm;
+        font-size: clamp(24px, 5vw, 36px);
+        color: var(--h1-color);
+      }
+    }
 
     & div.inner {
       display: flex;
