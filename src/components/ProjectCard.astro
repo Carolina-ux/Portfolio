@@ -13,12 +13,25 @@ interface Props {
 const {
   title = "Project title",
   subtitle = "Project subtitle",
-  imageSrc = "./assets/img/carolina-img.avif",
+  imageSrc,
   linkUrl,
   slug,
 }: Props = Astro.props;
+const base = import.meta.env.BASE_URL ?? "/";
+const withBase = (path?: string) => {
+  if (!path) return undefined;
+  if (/^https?:\/\//.test(path)) return path;
+  const cleanedPath = path.replace(/^\.\//, "").replace(/^\//, "");
+  return `${base}${cleanedPath}`;
+};
 
-const resolvedLink = linkUrl ?? (slug ? `./proyects/${slug}` : undefined);
+const safeImageSrc =
+  withBase(imageSrc) ?? `${base}assets/img/carolina-img.avif`;
+const resolvedLink = linkUrl
+  ? (withBase(linkUrl) ?? linkUrl)
+  : slug
+    ? `${base}proyects/${slug}`
+    : undefined;
 ---
 
 <div class="proyect-card">
@@ -42,7 +55,7 @@ const resolvedLink = linkUrl ?? (slug ? `./proyects/${slug}` : undefined);
     </div>
   </div>
   <figure>
-    <img src={imageSrc} alt={title} loading="lazy" />
+    <img src={safeImageSrc} alt={title} loading="lazy" />
   </figure>
 
   <style>

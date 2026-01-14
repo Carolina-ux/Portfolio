@@ -1,0 +1,24 @@
+---
+import AboutSection from "../components/AboutSection.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import SkillsSections from "../components/SkillsSections.astro";
+---
+
+<div id="container">
+  <Header selectedPage="home" />
+  <AboutSection />
+  <SkillsSections />
+  <ProjectsSection />
+  <Footer />
+</div>
+
+<style>
+  #container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+  }
+</style>
