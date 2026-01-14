@@ -18,19 +18,20 @@ const {
   slug,
 }: Props = Astro.props;
 const base = import.meta.env.BASE_URL ?? "/";
+const normalizedBase = base.endsWith("/") ? base : `${base}/`;
 const withBase = (path?: string) => {
   if (!path) return undefined;
   if (/^https?:\/\//.test(path)) return path;
   const cleanedPath = path.replace(/^\.\//, "").replace(/^\//, "");
-  return `${base}${cleanedPath}`;
+  return `${normalizedBase}${cleanedPath}`;
 };
 
 const safeImageSrc =
-  withBase(imageSrc) ?? `${base}assets/img/carolina-img.avif`;
+  withBase(imageSrc) ?? `${normalizedBase}assets/img/carolina-img.avif`;
 const resolvedLink = linkUrl
   ? (withBase(linkUrl) ?? linkUrl)
   : slug
-    ? `${base}proyects/${slug}`
+    ? `${normalizedBase}proyects/${slug}`
     : undefined;
 ---
 
