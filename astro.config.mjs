@@ -4,6 +4,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://carolina-ux.github.io",
+  site: "https://carolina-ux.github.io/Portfolio/",
+  base: "/Portfolio/",
   integrations: [mdx()],
 });
