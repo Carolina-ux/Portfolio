@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, getEntry } from "astro:content";
 import type { CollectionEntry, InferEntrySchema } from "astro:content";
+import Header from "../../components/Header.astro";
 
 type ProjectEntry = CollectionEntry<"projects">;
 
@@ -22,6 +23,15 @@ if (!entry) {
 const { Content, headings } = await entry.render();
 const data: InferEntrySchema<"projects"> = entry.data;
 const pageTitle = data.title ?? slug;
+const base = import.meta.env.BASE_URL ?? "/";
+const withBase = (path?: string) => {
+  if (!path) return undefined;
+  if (/^https?:\/\//.test(path)) return path;
+  const cleanedPath = path.replace(/^\.\//, "").replace(/^\//, "");
+  return `${base}${cleanedPath}`;
+};
+const heroImage = withBase(data.image);
+const columns = data.columns ?? [];
 
 const allProjects = await getCollection("projects");
 const currentIndex = allProjects.findIndex((p) => p.slug === slug);
@@ -33,6 +43,7 @@ const next =
 ---
 
 <Layout>
+  <Header selectedPage="projects" />
   <main class="project-page">
     <article>
       <header>
@@ -42,11 +53,30 @@ const next =
       </header>
 
       {
-        data.image && (
+        heroImage && (
           <figure>
-            <img src={data.image} alt={pageTitle} loading="lazy" />
+            <img src={heroImage} alt={pageTitle} loading="lazy" />
           </figure>
         )
+      }
+
+      {
+        columns.length ? (
+          <section class="info-grid">
+            {columns.map((col) => (
+              <div class="info-card">
+                <p class="info-title">{col.title}</p>
+                {col.items?.length ? (
+                  <ul>
+                    {col.items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ))}
+          </section>
+        ) : null
       }
 
       <Content />
@@ -68,12 +98,12 @@ const next =
         (prev || next) && (
           <nav class="pager">
             {prev && (
-              <a href={`./${prev.slug}`} rel="prev">
+              <a href={`${base}proyects/${prev.slug}`} rel="prev">
                 ← {prev.data.title}
               </a>
             )}
             {next && (
-              <a href={`./${next.slug}`} rel="next">
+              <a href={`${base}proyects/${next.slug}`} rel="next">
                 {next.data.title} →
               </a>
             )}
@@ -104,7 +134,7 @@ const next =
     display: grid;
     grid-template-columns: 1fr 280px;
     gap: 48px;
-    padding: 48px clamp(16px, 4vw, 64px);
+    padding: 120px clamp(16px, 4vw, 64px);
   }
 
   article {
@@ -142,8 +172,38 @@ const next =
 
   figure img {
     display: block;
-    width: 100%;
+    width: 20vw;
     height: auto;
+  }
+
+  section.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 8px 0 4px;
+  }
+
+  .info-card {
+    border: 1px solid var(--bg-2-color, #f3f4f8);
+    border-radius: 12px;
+    padding: 16px;
+    background: var(--bg-1-color, #ffffff);
+  }
+
+  .info-title {
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: var(--h3-color, #1a1a2c);
+    font-size: 16px;
+  }
+
+  .info-card ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--text-muted);
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
   }
 
   .cta a {

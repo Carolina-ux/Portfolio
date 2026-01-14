@@ -1,22 +1,22 @@
 ---
-import ProyectCard from "./ProyectCard.astro";
+import ProjectCard from "./ProjectCard.astro";
 import { getCollection } from "astro:content";
 
-const proyects = (await getCollection("projects")).sort((a, b) => {
+const projects = (await getCollection("projects")).sort((a, b) => {
   const orderA = a.data.order ?? Number.MAX_SAFE_INTEGER;
   const orderB = b.data.order ?? Number.MAX_SAFE_INTEGER;
   return orderA - orderB;
 });
 ---
 
-<section class="proyects" id="proyects">
+<section class="projects" id="projects">
   <div class="header">
     <h2 class="h1">Case studies</h2>
   </div>
   <div class="content">
     {
-      proyects.map(({ data, slug }) => (
-        <ProyectCard
+      projects.map(({ data, slug }) => (
+        <ProjectCard
           title={data.title}
           subtitle={data.subtitle}
           imageSrc={data.image}
@@ -29,7 +29,7 @@ const proyects = (await getCollection("projects")).sort((a, b) => {
 </section>
 
 <style>
-  section.proyects {
+  section.projects {
     display: flex;
     flex-direction: column;
     justify-content: center;

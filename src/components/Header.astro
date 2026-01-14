@@ -1,6 +1,19 @@
 ---
 import { LINKS_TYPES } from "../types/types";
 import Link from "./Link.astro";
+
+interface Props {
+  selectedPage?: string;
+}
+const { selectedPage = "home" }: Props = Astro.props;
+
+const isActive = (name: string) => selectedPage === name;
+const base = import.meta.env.BASE_URL ?? "/";
+const hrefFor = (section: string) => {
+  const anchor = `#${section}`;
+  if (selectedPage === "projects" && section === "projects") return anchor;
+  return selectedPage === "projects" ? `${base}${anchor}` : anchor;
+};
 ---
 
 <header>
@@ -9,18 +22,40 @@ import Link from "./Link.astro";
     <nav>
       <ul>
         <li>
-          <Link url="#about" variant={LINKS_TYPES.SECONDARY} active={true}>
+          <Link
+            url={hrefFor("about")}
+            variant={LINKS_TYPES.SECONDARY}
+            active={isActive("home")}
+          >
             Home
           </Link>
         </li>
         <li>
-          <Link url="#skills" variant={LINKS_TYPES.SECONDARY}>Skills </Link>
+          <Link
+            url={hrefFor("skills")}
+            variant={LINKS_TYPES.SECONDARY}
+            active={isActive("skills")}
+          >
+            Skills
+          </Link>
         </li>
         <li>
-          <Link url="#proyects" variant={LINKS_TYPES.SECONDARY}>Projects</Link>
+          <Link
+            url={hrefFor("projects")}
+            variant={LINKS_TYPES.SECONDARY}
+            active={isActive("projects")}
+          >
+            Projects
+          </Link>
         </li>
         <li>
-          <Link url="#contact" variant={LINKS_TYPES.SECONDARY}>Contact</Link>
+          <Link
+            url={hrefFor("contact")}
+            variant={LINKS_TYPES.SECONDARY}
+            active={isActive("contact")}
+          >
+            Contact
+          </Link>
         </li>
         <li class="hidden">Menu</li>
       </ul>
@@ -34,104 +69,120 @@ import Link from "./Link.astro";
         <ul>
           <li></li>
           <li>
-            <Link url="#about" variant={LINKS_TYPES.SECONDARY} active={true}
-              >Home</Link
+            <Link
+              url={hrefFor("about")}
+              variant={LINKS_TYPES.SECONDARY}
+              active={isActive("home")}
             >
-          </li>
-          <li>
-            <Link url="#proyects" variant={LINKS_TYPES.SECONDARY}>Projects</Link
-            >
-          </li>
-          <li>
-            <Link url="#contact" variant={LINKS_TYPES.SECONDARY}>Contact</Link>
-          </li>
-          <li>
-            <Link resume={true} variant={LINKS_TYPES.PRIMARY}>
-              Download resume
+              Home
             </Link>
+          </li>
+          <li>
+            <Link
+              url={hrefFor("projects")}
+              variant={LINKS_TYPES.SECONDARY}
+              active={isActive("projects")}
+            >
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link
+              url={hrefFor("contact")}
+              variant={LINKS_TYPES.SECONDARY}
+              active={isActive("contact")}
+            >
+              Contact
+            </Link>
+            url={hrefFor("projects")}
+            <li>
+              <Link resume={true} variant={LINKS_TYPES.PRIMARY}>
+                Download resume
+              </Link>
+            </li>
           </li>
         </ul>
       </nav>
     </details>
   </div>
-</header>
 
-<style>
-  header {
-    position: fixed;
-    padding: 16px 40px;
-    width: 100%;
-    background-color: #ffffffa9;
+  <style>
+    header {
+      position: fixed;
+      padding: 16px 40px;
+      width: 100%;
+      background-color: #ffffffa9;
 
-    & .desktop {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      & nav ul {
-        list-style: none;
+      & .desktop {
         display: flex;
-        gap: 24px;
-        margin: 0;
-        padding: 0;
+        justify-content: space-between;
+        align-items: center;
 
-        & li {
+        & nav ul {
+          list-style: none;
+          display: flex;
+          gap: 24px;
           margin: 0;
+          padding: 0;
 
-          &.hidden {
-            display: none;
+          & li {
+            margin: 0;
+
+            &.hidden {
+              display: none;
+            }
           }
         }
-      }
-    }
-
-    & .mobile {
-      display: none;
-    }
-
-    @media (max-width: 390px) {
-      & .desktop {
-        display: none;
       }
 
       & .mobile {
-        display: block;
+        display: none;
+      }
 
-        & details {
-          color: var(--link-2-color);
-
-          &:first-of-type summary::marker,
-          :is(::-webkit-details-marker) {
-            content: "☰";
-            font-weight: bolder;
-          }
-
-          &[open]:first-of-type summary::marker {
-            content: "✕";
-          }
-
-          & summary {
-            font-weight: bold;
-          }
+      @media (max-width: 390px) {
+        & .desktop {
+          display: none;
         }
 
-        & nav {
-          height: max-content;
+        & .mobile {
+          display: block;
 
-          & ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            margin: 0;
-            padding: 0;
+          & details {
+            color: var(--link-2-color);
 
-            & li {
+            &:first-of-type summary::marker,
+            :is(::-webkit-details-marker) {
+              content: "☰";
+              font-weight: bolder;
+            }
+
+            &[open]:first-of-type summary::marker {
+              content: "✕";
+            }
+
+            & summary {
+              font-weight: bold;
+            }
+          }
+
+          & nav {
+            height: max-content;
+
+            & ul {
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+              gap: 32px;
               margin: 0;
+              padding: 0;
+
+              & li {
+                margin: 0;
+              }
             }
           }
         }
       }
     }
-  }
-</style>
+  </style>
+</header>
