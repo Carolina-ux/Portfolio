@@ -1,5 +1,5 @@
 ---
-
+const base = import.meta.env.BASE_URL ?? "/";
 ---
 <section id="about" class="about">
   
@@ -17,7 +17,7 @@
       </article>
     
     <div class="img">
-      <img src="./assets/img/carolina-img.avif" alt="Carolina Ruzafa face" />
+      <img src={`${base}assets/img/carolina-img.avif`} alt="Carolina Ruzafa face" />
     </div>
   </main>
   

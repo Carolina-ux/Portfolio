@@ -4,6 +4,11 @@ const {
   skillSubtitle = "subtitulo",
   imageSrc = "./assets/img/skills/default.png",
 } = Astro.props;
+
+const base = import.meta.env.BASE_URL ?? "/";
+const safeImageSrc = imageSrc.startsWith('http') 
+  ? imageSrc 
+  : `${base}${imageSrc.replace(/^\.?\//, '')}`;
 ---
 
 <div class="skill-card">
@@ -12,7 +17,7 @@ const {
     <p>{skillSubtitle}</p>
   </div>
   <div class="img">
-    <img src={imageSrc} />
+    <img src={safeImageSrc} />
   </div>
 </div>
 
