@@ -24,11 +24,12 @@ const { Content, headings } = await entry.render();
 const data: InferEntrySchema<"projects"> = entry.data;
 const pageTitle = data.title ?? slug;
 const base = import.meta.env.BASE_URL ?? "/";
+const normalizedBase = base.endsWith("/") ? base : `${base}/`;
 const withBase = (path?: string) => {
   if (!path) return undefined;
   if (/^https?:\/\//.test(path)) return path;
   const cleanedPath = path.replace(/^\.\//, "").replace(/^\//, "");
-  return `${base}${cleanedPath}`;
+  return `${normalizedBase}${cleanedPath}`;
 };
 const heroImage = withBase(data.image);
 const columns = data.columns ?? [];
@@ -98,12 +99,12 @@ const next =
         (prev || next) && (
           <nav class="pager">
             {prev && (
-              <a href={`${base}proyects/${prev.slug}`} rel="prev">
+              <a href={`${normalizedBase}proyects/${prev.slug}`} rel="prev">
                 ← {prev.data.title}
               </a>
             )}
             {next && (
-              <a href={`${base}proyects/${next.slug}`} rel="next">
+              <a href={`${normalizedBase}proyects/${next.slug}`} rel="next">
                 {next.data.title} →
               </a>
             )}
