@@ -6,9 +6,9 @@ const {
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL ?? "/";
-const safeImageSrc = imageSrc.startsWith('http') 
-  ? imageSrc 
-  : `${base}${imageSrc.replace(/^\.?\//, '')}`;
+const safeImageSrc = imageSrc.startsWith("http")
+  ? imageSrc
+  : `${base}${imageSrc.replace(/^\.?\//, "")}`;
 ---
 
 <div class="skill-card">
