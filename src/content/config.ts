@@ -5,9 +5,12 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string().optional(),
+    description: z.string().optional(),
     link: z.string().url().optional(),
     image: z.string(),
     order: z.number().optional(),
+    keywords: z.array(z.string()).optional(),
+    publishedDate: z.date().optional(),
     columns: z
       .array(
         z.object({

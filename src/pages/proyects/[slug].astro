@@ -23,6 +23,16 @@ if (!entry) {
 const { Content, headings } = await entry.render();
 const data: InferEntrySchema<"projects"> = entry.data;
 const pageTitle = data.title ?? slug;
+
+const seoDescription =
+  data.description ??
+  data.subtitle ??
+  `Case study: ${pageTitle} - Carolina Ruzafa UX/UI Design Portfolio`;
+
+const seoKeywords =
+  data.keywords?.join(", ") ??
+  "UX Design, UI Design, Case Study, Portfolio, User Experience";
+
 const base = import.meta.env.BASE_URL ?? "/";
 const normalizedBase = base.endsWith("/") ? base : `${base}/`;
 const withBase = (path?: string) => {
@@ -43,7 +53,15 @@ const next =
     : undefined;
 ---
 
-<Layout>
+<Layout
+  seoTitle={pageTitle}
+  seoDescription={seoDescription}
+  seoImage={data.image}
+  seoType="article"
+  seoKeywords={seoKeywords}
+  seoAuthor="Carolina Ruzafa"
+  lang="en"
+>
   <Header selectedPage="projects" />
   <main class="project-page">
     <article>
