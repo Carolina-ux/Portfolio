@@ -1,0 +1,71 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  canonical?: string;
+  keywords?: string;
+  author?: string;
+  lang?: string;
+}
+
+const {
+  title = "Carolina Ruzafa - UX UI Designer",
+  description = "A UX UI designer, focused on creating accessible digital products and improving the user experience.",
+  image,
+  type = "website",
+  canonical,
+  keywords = "UX Design, UI Design, Accessibility, User Experience, Graphic Design, Portfolio",
+  author = "Carolina Ruzafa",
+  lang = "en",
+} = Astro.props;
+
+const site = import.meta.env.SITE ?? "https://carolinaruzafa.online/Portfolio/";
+const base = import.meta.env.BASE_URL ?? "/";
+const normalizedBase = base.endsWith("/") ? base : `${base}/`;
+
+// Construir URL canónica
+const currentPath = Astro.url.pathname;
+const canonicalURL = canonical ?? new URL(currentPath, site).href;
+
+// Construir URL completa para la imagen
+let imageURL = image;
+if (image && !image.startsWith("http")) {
+  // Si la imagen es relativa, construir URL completa
+  const cleanImage = image.replace(/^\.\//, "").replace(/^\//, "");
+  imageURL = new URL(`${normalizedBase}${cleanImage}`, site).href;
+}
+
+// Título completo con el nombre del sitio
+const fullTitle = title.includes("Carolina Ruzafa")
+  ? title
+  : `${title} | Carolina Ruzafa`;
+---
+
+<!-- Metaetiquetas básicas -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
+{author && <meta name="author" content={author} />}
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+{imageURL && <meta property="og:image" content={imageURL} />}
+<meta property="og:site_name" content="Carolina Ruzafa Portfolio" />
+<meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+{imageURL && <meta name="twitter:image" content={imageURL} />}
+
+<!-- Robots y indexación -->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />

@@ -1,10 +1,32 @@
 ---
+import SEOMeta from "../components/SEOMeta.astro";
+
+interface Props {
+  seoTitle?: string;
+  seoDescription?: string;
+  seoImage?: string;
+  seoType?: "website" | "article";
+  seoKeywords?: string;
+  seoAuthor?: string;
+  lang?: string;
+}
+
+const {
+  seoTitle,
+  seoDescription,
+  seoImage,
+  seoType = "website",
+  seoKeywords,
+  seoAuthor,
+  lang = "en",
+} = Astro.props;
+
 const base = import.meta.env.BASE_URL ?? "/";
 const normalizedBase = base.endsWith("/") ? base : `${base}/`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -14,7 +36,15 @@ const normalizedBase = base.endsWith("/") ? base : `${base}/`;
       href={`${normalizedBase}favicon.svg`}
     />
     <meta name="generator" content={Astro.generator} />
-    <title>Carolina's site</title>
+    <SEOMeta
+      title={seoTitle}
+      description={seoDescription}
+      image={seoImage}
+      type={seoType}
+      keywords={seoKeywords}
+      author={seoAuthor}
+      lang={lang}
+    />
     <link rel="stylesheet" href={`${normalizedBase}assets/css/style.css`} />
   </head>
   <body>
