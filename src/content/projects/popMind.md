@@ -1,5 +1,5 @@
 ---
-title: "popmind"
+title: "Popmind"
 subtitle: "Evaluating web accessibility compliance and identifying barriers for users with assistive technologies."
 image: "./assets/img/projects/popmind.avif"
 order: 2
