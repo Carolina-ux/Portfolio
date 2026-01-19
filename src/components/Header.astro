@@ -68,7 +68,6 @@ const hrefFor = (section: string) => {
       <summary> Menu </summary>
       <nav>
         <ul>
-          <li></li>
           <li>
             <Link
               url={hrefFor("about")}
@@ -76,6 +75,15 @@ const hrefFor = (section: string) => {
               active={isActive("home")}
             >
               Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              url={hrefFor("skills")}
+              variant={LINKS_TYPES.SECONDARY}
+              active={isActive("skills")}
+            >
+              Skills
             </Link>
           </li>
           <li>
@@ -95,12 +103,11 @@ const hrefFor = (section: string) => {
             >
               Contact
             </Link>
-            url={hrefFor("projects")}
-            <li>
-              <Link resume={true} variant={LINKS_TYPES.PRIMARY}>
-                Download resume
-              </Link>
-            </li>
+          </li>
+          <li>
+            <Link resume={true} variant={LINKS_TYPES.PRIMARY}>
+              Download resume
+            </Link>
           </li>
         </ul>
       </nav>
@@ -140,7 +147,7 @@ const hrefFor = (section: string) => {
         display: none;
       }
 
-      @media (max-width: 390px) {
+      @media (max-width: 768px) {
         & .desktop {
           display: none;
         }

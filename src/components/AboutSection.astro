@@ -35,16 +35,15 @@ const normalizedBase = base.endsWith("/") ? base : `${base}/`;
     align-items: center;
     gap: 64px;
     width: 100%;
-    height: 720px;
+    min-height: 720px;
 
     .text {
-      width: 64vh;
+      width: 60%;
       max-width: 824px;
     }
 
     .img {
       width: 320px;
-      gap: 18vw;
 
       img {
         border-radius: 8px;
@@ -53,13 +52,13 @@ const normalizedBase = base.endsWith("/") ? base : `${base}/`;
     }
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 768px) {
     section.about {
       flex-direction: column-reverse;
       justify-content: flex-end;
       margin-top: 84px;
-      padding: 0 16vw;
-      height: max-content;
+      padding: 0 24px;
+      min-height: auto;
 
       .text {
         width: 100%;
