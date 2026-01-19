@@ -68,6 +68,7 @@ const resolvedLink = linkUrl
       gap: 32px;
       width: 90vw;
       max-width: 824px;
+      flex-wrap: wrap;
 
       & div.card-title {
         & p {
@@ -86,6 +87,8 @@ const resolvedLink = linkUrl
         flex-direction: column;
         justify-content: space-evenly;
         height: 208px;
+        flex: 1;
+        min-width: 250px;
       }
 
       & figure {
@@ -129,10 +132,9 @@ const resolvedLink = linkUrl
       }
     }
 
-    @media (max-width: 390px) {
+    @media (max-width: 768px) {
       div.proyect-card {
         flex-direction: column-reverse;
-        gap: 0;
       }
     }
   </style>
