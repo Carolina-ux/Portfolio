@@ -107,7 +107,7 @@ const next =
               href={data.link}
               target={data.link.startsWith("http") ? "_blank" : undefined}
             >
-              Ver proyecto
+              Visit Project
             </a>
           </p>
         )
@@ -134,7 +134,7 @@ const next =
     {
       headings?.length ? (
         <aside class="toc">
-          <p class="toc-title">Contenido</p>
+          <p class="toc-title">Table of Contents</p>
           <ul>
             {headings.map((h) => (
               <li class={`lvl-${h.depth}`}>

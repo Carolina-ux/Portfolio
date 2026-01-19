@@ -36,6 +36,8 @@ Evaluate the Sprinter website's compliance with accessibility standards from a v
 
 ### General Considerations
 
+![color matrix](/Portfolio/assets/img/projects/popmind/5vieF0jsr3l3vRblEjXBW1odks.webp)
+
 #### Color Contrast
 
 The following image is a color matrix, generated from the main colors of the Sprinter website.
@@ -44,6 +46,8 @@ The following image is a color matrix, generated from the main colors of the Spr
 
 The `#C2C2C2` color with the `#FFFFFF` color has a contrast ratio of **1.7:1**. Therefore, it is insufficient.
 
+![product example](../../../public/assets/img/projects/popmind/sjc5ZWYW2ntGwWfR8gfSqglLWoE.webp)
+
 ###### Example 1 from Sprinter Website: Seeker
 
 > **Recommendation:** Use a contrast ratio of 4.5:1. For large text, you can use a minimum ratio of 3.0:1.
@@ -51,6 +55,8 @@ The `#C2C2C2` color with the `#FFFFFF` color has a contrast ratio of **1.7:1**. 
 ##### Issue 2: Low Contrast for Regular Text
 
 The `#828282` color with the `#FFFFFF` color has a contrast ratio of **3.8:1**. It's okay for large text, but not for regular text as is the case.
+
+![product example](../../../public/assets/img/projects/popmind/DTnzlQJfR7cdwBSYXzfjxv4Swg.webp)
 
 ###### Example 2 from Sprinter Website: Seeker
 
