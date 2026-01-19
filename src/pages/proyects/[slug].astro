@@ -244,16 +244,18 @@ const next =
   }
 
   figure {
-    margin: 0;
+    margin: 0 auto;
     border-radius: 16px;
     overflow: hidden;
     background: var(--bg-2-color, #f3f4f8);
+    max-width: 600px;
   }
 
   figure img {
     display: block;
     width: 100%;
     height: auto;
+    object-fit: cover;
   }
 
   section.info-grid {
