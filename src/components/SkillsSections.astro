@@ -34,8 +34,7 @@ import { skills } from "../data/skills.ts";
       max-width: 824px;
 
       & h2.h1 {
-        margin-bottom: 32px;
-        margin: 0 20vm;
+        margin: 0 0 32px 0;
         font-size: clamp(24px, 5vw, 36px);
         color: var(--h1-color);
       }
@@ -52,9 +51,24 @@ import { skills } from "../data/skills.ts";
     }
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 768px) {
     section.skills {
-      height: auto;
+      gap: 40px;
+      width: 100%;
+      padding: 0 24px;
+
+      div.header {
+        width: 100%;
+
+        & h2.h1 {
+          text-align: center;
+        }
+      }
+
+      & div.inner {
+        gap: 32px;
+        width: 100%;
+      }
     }
   }
 </style>
