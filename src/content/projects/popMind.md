@@ -76,28 +76,28 @@ As a starting point, I conducted a detailed analysis of several applications ded
 
 I analyzed their functionalities, strengths and weaknesses, identifying what they do well and where they fail. The objective was clear: to discover how we could design a different and more effective experience, which would really help users to concentrate, without losing sight of motivation and well-being.
 
-![alt text](/Portfolio/assets/img/projects/popmind/IVnsNmwkRVVgLiEgg2aZzn7xU.avif)
+![alt text](/assets/img/projects/popmind/IVnsNmwkRVVgLiEgg2aZzn7xU.avif)
 
 Using the above scoring system, some applications on the market are evaluated. In the following image you can see an example of one of them.
 
-![alt text](/Portfolio/assets/img/projects/popmind/n3zWfoUqYX0TtLp3TfR37boL83o.avif)
+![alt text](/assets/img/projects/popmind/n3zWfoUqYX0TtLp3TfR37boL83o.avif)
 
 ## User Research
 
 Through detailed user research, I identified the pain points and needs of our target audience. This involved surveys, interviews, and behavioral analysis to understand how users interact with productivity tools and what features would be most valuable.
-![alt text](/Portfolio/assets/img/projects/popmind/grD9TQSJ4TmCij7MPJpx3kNjH0.avif)
+![alt text](/assets/img/projects/popmind/grD9TQSJ4TmCij7MPJpx3kNjH0.avif)
 
-![alt text](/Portfolio/assets/img/projects/popmind/S6SIcmCVy69xJ4Q2IbLtijLXYE.avif)
+![alt text](/assets/img/projects/popmind/S6SIcmCVy69xJ4Q2IbLtijLXYE.avif)
 
-![alt text](/Portfolio/assets/img/projects/popmind/QseJqpMUWi0mc01Qsa7RRBBOI.avif)
+![alt text](/assets/img/projects/popmind/QseJqpMUWi0mc01Qsa7RRBBOI.avif)
 
-![alt text](/Portfolio/assets/img/projects/popmind/ISDvSRAKCPn3JUE0DlqzHu3fmQI.avif)
+![alt text](/assets/img/projects/popmind/ISDvSRAKCPn3JUE0DlqzHu3fmQI.avif)
 
 ## Customer Journey Map
 
 To reflect the steps our archetypes follow when looking for a solution to their problem or need, a customer journey map has been created. This way, we will better understand the experience, needs and frustrations of our users.
 
-![alt text](/Portfolio/assets/img/projects/popmind/bUr4lMVOJkv3qmiVtEEZlKm8Zg.avif)
+![alt text](/assets/img/projects/popmind/bUr4lMVOJkv3qmiVtEEZlKm8Zg.avif)
 
 ## User Flow
 
@@ -111,7 +111,7 @@ At the end of each session, progress tracking and a reward system help users sta
 
 In summary, PopMind blends simple navigation with personalized functionality, creating a seamless user flow that not only helps users focus but also encourages healthy and sustainable habits in the long run.
 
-![alt text](/Portfolio/assets/img/projects/popmind/AQbZAGXCebCzTtBLzYE0RTbxHO8.avif)
+![alt text](/assets/img/projects/popmind/AQbZAGXCebCzTtBLzYE0RTbxHO8.avif)
 
 ## Wireframes
 
@@ -125,7 +125,7 @@ The Pomodoro timer screen includes a task selector and a clear visual indicator 
 
 In short, these wireframes define the functional and visual foundation of the app, ensuring a clean, intuitive, and user-centered experience.
 
-![alt text](/Portfolio/assets/img/projects/popmind/tXMLCQqZPCmw86Glm6JZmX9MCY.avif)
+![alt text](/assets/img/projects/popmind/tXMLCQqZPCmw86Glm6JZmX9MCY.avif)
 
 ## Prototype
 
@@ -139,13 +139,13 @@ From the very first moment, PopMind adapts to each person's style and needs. Use
 
 The onboarding process introduces the main features (Pomodoro timer, notification blocking, task lists, and community) in a brief, visual way, making it easy to understand what the app offers and how to get started.
 
-![alt text](/Portfolio/assets/img/projects/popmind/tXMLCQqZPCmw86Glm6JZmX9MCY.avif)
+![alt text](/assets/img/projects/popmind/tXMLCQqZPCmw86Glm6JZmX9MCY.avif)
 
 ### Main Screens
 
 The main screens are designed to provide quick access to all essential tools. From the home screen displaying daily tasks, to the Pomodoro timer, and the task management features, each screen is optimized for ease of use and clarity.
 
-![alt text](/Portfolio/assets/img/projects/popmind/OfYbfvDXmxwAFYNgjb3fADzvt10.avif)
+![alt text](/assets/img/projects/popmind/OfYbfvDXmxwAFYNgjb3fADzvt10.avif)
 
 ### Other Features
 
@@ -153,4 +153,4 @@ PopMind brings a playful twist to focus management. Every completed session, eve
 
 Additionally, the community feature allows users to join study or productivity groups, encouraging mutual support and creating a positive environment for achieving personal goals. All of this comes with the option to customize the app's appearance, including themes and light/dark mode.
 
-![alt text](/Portfolio/assets/img/projects/popmind/jtD7RiZXemOqqwicweh0PRGYwQs.avif)
+![alt text](/assets/img/projects/popmind/jtD7RiZXemOqqwicweh0PRGYwQs.avif)
