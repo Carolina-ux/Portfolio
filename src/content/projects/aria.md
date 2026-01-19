@@ -54,7 +54,11 @@ Its aim is to make it easier for users to check flights and buy tickets using vo
 - People who have difficulty navigating traditional websites or apps
 - Occasional travelers looking for speed or hands-free (drivers, busy people, etc.)
 
+  ![person use case](/Portfolio/assets/img/projects/aria/WXuEwBW67kUntyv75w5yaUrHJQ.avif)
+
 ### Features
+
+![airline ticket](/Portfolio/assets/img/projects/aria/NPkLgJZFl9VtA50yaiHbiMS2yxY.avif)
 
 **Compatible channels and devices:**
 
@@ -78,6 +82,10 @@ Its aim is to make it easier for users to check flights and buy tickets using vo
 
 ❌ Complex functions (refunds, complaints, etc.)
 
+## MPV - Technology
+
+![Technology path](/Portfolio/assets/img/projects/aria/UQHpHhWFjsCg0ZhlMEzDaiQOY.webp)
+
 ## MPV - People
 
 We conduct desk research on our competitors, such as Iberia and Ryanair. This gives us a picture of how users shop or what their primary purchasing factor is. We also analyze how these companies display their content and what features they offer.
@@ -89,6 +97,8 @@ A questionnaire was then used to interview people who regularly purchase flights
 ### Voice Assistant Personality
 
 American Airlines' virtual voice assistant is designed to offer friendly and efficient interactions with passengers. With a neutral and respectful tone, it provides clear and accessible communication, ensuring a seamless user experience. Its focus is on facilitating customer interaction with the airline's services in a seamless and effortless manner, ensuring that each user feels heard and professionally served.
+
+![virtual assistance modes](/Portfolio/assets/img/projects/aria/ALQV9QhrXxQCHfhckDU3BHk9SbU.webp)
 
 ### Conversational Structure
 
@@ -106,9 +116,13 @@ In the creation of the happy path, "prompts" were also considered, which indicat
 The "utterances" contain variables called "slots" which capture specific details. An example would be:
 
 > **Utterance:** "I want to check flights", the slot would be `{destination}` `{origin}`.
+>
+![happy path](/Portfolio/assets/img/projects/aria/EwgDUBucVjijxP3eFRfQwtj2nI.webp)
 
 ### Multimodal Experience
 
 The Aria voice assistant has been designed with a multimodal approach, allowing users to interact with the platform seamlessly across different channels: voice and screen. This approach improves accessibility, efficiency, and flexibility in the user experience.
 
 Below are the example user interaction screens in case you want to test the prototype.
+
+![Prototipe](/Portfolio/assets/img/projects/aria/Ks0BuwCy836MPc85MIGfEnBvzw4.png)
