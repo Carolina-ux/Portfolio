@@ -3,12 +3,12 @@ import type { Skill } from "../types/types";
 export const skills: Skill[] = [
   {
     name: "Famer",
-    subtitle: "Web Desing",
+    subtitle: "Web Design",
     imageSrc: "./assets/img/skills/framer.svg",
   },
   {
     name: "Figma",
-    subtitle: "Collaborative Desing",
+    subtitle: "Collaborative Design",
     imageSrc: "./assets/img/skills/figma.svg",
   },
   {
