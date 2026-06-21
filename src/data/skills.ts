@@ -18,7 +18,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Adobe Suite",
-    subtitle: "Desing tools",
+    subtitle: "Design tools",
     imageSrc: "./assets/img/skills/adobe.png",
   },
   {
